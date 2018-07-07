@@ -12,28 +12,18 @@ source:
   sha256: {{ sha256 }}
 
 build:
-  number: 0
-  skip: True  # [win and py36]
-  features:
-    - vc9     # [win and py27]
-    - vc10    # [win and py34]
-    - vc14    # [win and py35]
+  number: 1
 
 requirements:
   build:
-    - python  # [win]
     - pkg-config  # [unix]
-    - qt 5.6.*
     - cmake
-    - toolchain
-    - vc 9    # [win and py27]
-    - vc 10   # [win and py34]
-    - vc 14   # [win and py35]
+    - {{ compiler('c') }}
+    - {{ compiler('cxx') }}
+  host:
+    - qt
   run:
-    - qt 5.6.*
-    - vc 9    # [win and py27]
-    - vc 10   # [win and py34]
-    - vc 14   # [win and py35]
+    - qt
 
 test:
   commands:
@@ -50,5 +40,5 @@ about:
 
 extra:
   recipe-maintainers:
-    - ceholden 
+    - ceholden
     - gillins

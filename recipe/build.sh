@@ -8,13 +8,14 @@ cd build/
 cmake \
     -D CMAKE_INSTALL_PREFIX=$PREFIX \
     -D CMAKE_INSTALL_LIBDIR=$PREFIX/lib \
+    -D CMAKE_POLICY_DEFAULT_CMP0025=NEW \
     ..
 
 make -j$CPU_COUNT
 # No "make check" available
 make install
 
-# we are fixing the paths to dynamic library files inside library 
+# we are fixing the paths to dynamic library files inside library
 # because something in make install is doubling up the
 # path to the library files.  Anyone who knows how to solve that
 # problem is free to contact the maintainers.

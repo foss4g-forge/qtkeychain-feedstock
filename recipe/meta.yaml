@@ -10,6 +10,8 @@ source:
   fn: {{ name }}-{{ version }}.tar.gz
   url: https://github.com/frankosterfeld/{{ name }}/archive/v{{ version }}.tar.gz
   sha256: {{ sha256 }}
+  # FIXME: On Win, expansion fails due to 'ReadMe.markdown' symlink in archive.
+  #        Find automated way of stripping it, or save to other endpoint as cleaned archive.
 
 build:
   number: 1000
